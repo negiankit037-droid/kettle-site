@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Kumaon Kettle</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: #121212; color: white; } 
+
+        nav { background: #2c1810; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        nav a { color: white; text-decoration: none; margin: 0 10px; font-size: 13px; font-weight: bold; letter-spacing: 1px; }
+
+        .header { text-align: center; padding: 40px 20px; }
+        .header h1 { font-size: 30px; color: #ff9d00; font-family: serif; letter-spacing: 1px; }
+        .header .sep { width: 40px; height: 2px; background: #9a3412; margin: 15px auto; }
+
+        /* Clean Masonry Grid */
+        .gallery-wrap { 
+            padding: 10px; 
+            column-count: 2; 
+            column-gap: 10px; 
+            max-width: 1100px; 
+            margin: auto; 
+        }
+        
+        @media (min-width: 768px) {
+            .gallery-wrap { column-count: 3; } 
+        }
+
+        .photo-card { 
+            margin-bottom: 10px; 
+            break-inside: avoid; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .photo-card img { 
+            width: 100%; 
+            display: block; 
+            transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .photo-card:hover img { 
+            transform: scale(1.05); 
+        }
+
+        /* Full Screen Lightbox */
+        #lightbox {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center;
+        }
+        #lightbox img { max-width: 95%; max-height: 85%; border-radius: 4px; box-shadow: 0 0 40px rgba(0,0,0,0.8); }
+        
+        /* Close Button Overlay */
+        .close-btn { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; font-weight: 100; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="menu.html">MENU</a>
+        <a href="gallery.html">GALLERY</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+
+    <div class="header">
+        <h1>Kettle Gallery</h1>
+        <div class="sep"></div>
+    </div>
+
+    <div class="gallery-wrap">
+        <div class="photo-card" onclick="openLightbox('pic1.jpg')"><img src="pic1.jpg"></div>
+        <div class="photo-card" onclick="openLightbox('pic2.jpg')"><img src="pic2.jpg"></div>
+        <div class="photo-card" onclick="openLightbox('pic3.jpg')"><img src="pic3.jpg"></div>
+        <div class="photo-card" onclick="openLightbox('pic4.jpg')"><img src="pic4.jpg"></div>
+        <div class="photo-card" onclick="openLightbox('pic5.jpg')"><img src="pic5.jpg"></div>
+        <div class="photo-card" onclick="openLightbox('pic6.jpg')"><img src="pic6.jpg"></div>
+        <div class="photo-card" onclick="openLightbox('pic7.jpg')"><img src="pic7.jpg"></div>
+        <div class="photo-card" onclick="openLightbox('pic8.jpg')"><img src="pic8.jpg"></div>
+        <div class="photo-card" onclick="openLightbox('pic9.jpg')"><img src="pic9.jpg"></div>
+        <div class="photo-card" onclick="openLightbox('pic10.jpg')"><img src="pic10.jpg"></div>
+    </div>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <span class="close-btn">&times;</span>
+        <img id="box-img" src="">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('box-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+    </script>
+
+</body>
+</html>
